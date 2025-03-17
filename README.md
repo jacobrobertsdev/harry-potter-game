@@ -2,7 +2,7 @@
 
 ## Overview
 
-For this project, students are tasked with developing a front-end Angular application with guessing/quiz/trivia mechanics that also interfaces with an API of their choice. Students will read through the provided [REQUIREMENTS.md](REQUIREMENDS.md) file and, with their teams, use it to plan the application they will create. When planning, each team will decide what API to utilize and discuss game logic, create a wireframe for their application in [Figma](https://www.figma.com/), and fill out [this survey](https://forms.office.com/r/mqQyHDC5Bm) for the instructional team to review. Upon gaining approval from an instructor, they will proceed to begin development on their application and following completion, will conduct an app demo for the class. 
+For this project, students are tasked with developing a front-end Angular application with guessing/quiz/trivia mechanics that also interfaces with an API of their choice. Students will read through the provided [REQUIREMENTS.md](REQUIREMENTS.md) file and, with their teams, use it to plan the application they will create. When planning, each team will decide what API to utilize and discuss game logic, create a wireframe for their application in [Figma](https://www.figma.com/), and fill out [this survey](https://forms.office.com/r/mqQyHDC5Bm) for the instructional team to review. Upon gaining approval from an instructor, they will proceed to begin development on their application and following completion, will conduct an app demo for the class. 
 
 ##### Note: The instructional team will approve or request any changes to a team's project no later than the second day of the project and do our best to ensure each team is able to begin development by the end of the second day.
 
