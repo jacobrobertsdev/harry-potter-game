@@ -16,13 +16,10 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     GameComponent,
     GameOverComponent,
     LeaderboardComponent,
-    NavbarComponent
+    NavbarComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  imports: [BrowserModule, AppRoutingModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
