@@ -11,9 +11,11 @@ nav {
     color: white;
     flex-wrap: wrap;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 0 1rem
 }
 
-nav .title {
+
+.title {
     display: flex;
     align-items: center;
     font-family: 'Harry P', sans-serif;
@@ -28,6 +30,5 @@ a {
 }
 
 img {
-    padding-left: .8rem;
-    max-width: 3.5rem;
+    max-width: 3.2rem;
 }

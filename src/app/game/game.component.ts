@@ -16,6 +16,7 @@ export class GameComponent implements OnInit {
   userHouse: string = '';
   houses: string[] = ['Gryffindor', 'Hufflepuff', 'Ravenclaw', 'Slytherin'];
   feedback: string = '';
+  score: number = 0;
 
   constructor(
     private characterService: CharacterService,
@@ -64,6 +65,7 @@ export class GameComponent implements OnInit {
 
     const newScore = this.playerService.getScore() + delta;
     this.playerService.setScore(newScore);
+
     setTimeout(() => this.loadNextCharacter, 1500);
   }
 

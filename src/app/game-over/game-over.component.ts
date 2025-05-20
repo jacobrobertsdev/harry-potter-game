@@ -8,13 +8,17 @@ import { Router } from '@angular/router';
   styleUrls: ['./game-over.component.css'],
 })
 export class GameOverComponent implements OnInit {
-  score: number = parseInt(localStorage.getItem('currentScore') || '0', 10);
+  score: number = 0;
   playerName: string = '';
+  house: string | null = '';
   error: string = '';
 
   constructor(private playerData: PlayerService, private router: Router) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.score = parseInt(localStorage.getItem('currentScore') || '0', 10);
+    this.house = this.playerData.getHouse();
+  }
 
   isNameTaken(name: string): boolean {
     let players = JSON.parse(localStorage.getItem('leaderboard') || '[]');
@@ -30,7 +34,13 @@ export class GameOverComponent implements OnInit {
         return;
       }
       let players = JSON.parse(localStorage.getItem('leaderboard') || '[]');
-      players.push({ name: this.playerName, score: this.score });
+      this.playerData.setName(this.playerName);
+
+      players.push({
+        name: this.playerName,
+        score: this.score,
+        house: this.house,
+      });
       localStorage.setItem('leaderboard', JSON.stringify(players));
       this.error = '';
     } else {
