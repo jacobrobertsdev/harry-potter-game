@@ -1,0 +1,35 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+img {
+    max-width: 3rem;
+}
+
+.heading {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    margin-bottom: 2rem;
+    font-family: 'Harry P', sans-serif;
+    font-size: 1.5rem;
+    letter-spacing: .15rem;
+}
+
+.container {
+    width: 70vw;
+    margin: 3rem auto;
+    text-align: center;
+}
+
+th,
+td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: center;
+}
+
+th {
+    background-color: #f2f2f2;
+}

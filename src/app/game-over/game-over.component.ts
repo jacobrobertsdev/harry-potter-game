@@ -43,6 +43,7 @@ export class GameOverComponent implements OnInit {
       });
       localStorage.setItem('leaderboard', JSON.stringify(players));
       this.error = '';
+      this.playerData.setScore(0);
     } else {
       this.error = 'Please enter your name before proceeding.';
     }

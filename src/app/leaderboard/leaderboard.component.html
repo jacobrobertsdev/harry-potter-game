@@ -1,1 +1,29 @@
-<p>leaderboard works!</p>
+<div class="container">
+    <div class="heading">
+        <h1>Leaderboard </h1>
+        <img src="../../assets/trophy.png" alt="">
+    </div>
+
+    <table *ngIf="players.length; else noPlayersMessage">
+        <thead>
+            <tr>
+                <th>Rank</th>
+                <th>Name</th>
+                <th>Score</th>
+                <th>House</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let player of sortedPlayers; let i = index">
+                <td>{{ i + 1 }}</td>
+                <td>{{ player.name }}</td>
+                <td>{{ player.score }}</td>
+                <td>{{ player.house }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ng-template #noPlayersMessage>
+        <h3>No players yet!</h3>
+    </ng-template>
+</div>
