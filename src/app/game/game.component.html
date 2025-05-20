@@ -1,7 +1,7 @@
 <p>Game Works</p>
 <div class="game-container" *ngIf="currentCharacter">
   <h2>Round {{ round }} of {{ maxRounds }}</h2>
-  <h3>Score: {{ currentScore }}</h3>
+  <h3>Score: {{ score }}</h3>
 
   <img [src]="currentCharacter.image" alt="Character image" width="200" />
   <h3>{{ currentCharacter.fullname }}</h3>

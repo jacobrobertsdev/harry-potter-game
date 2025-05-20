@@ -25,6 +25,7 @@ export class GameComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.score = parseInt(localStorage.getItem('currentScore') || '0');
     this.userHouse = this.playerService.getHouse() || '';
     this.characterService.getCharacters().subscribe((data) => {
       this.characters = data.filter((char) =>
@@ -65,11 +66,8 @@ export class GameComponent implements OnInit {
 
     const newScore = this.playerService.getScore() + delta;
     this.playerService.setScore(newScore);
+    this.score = this.playerService.getScore();
 
     setTimeout(() => this.loadNextCharacter, 1500);
-  }
-
-  get currentScore() {
-    return this.playerService.getScore();
   }
 }
