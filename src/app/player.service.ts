@@ -12,7 +12,6 @@ export class PlayerService {
 
   setScore(newScore: number) {
     this.score = newScore;
-    localStorage.setItem('currentScore', JSON.stringify(newScore));
   }
 
   getScore() {
