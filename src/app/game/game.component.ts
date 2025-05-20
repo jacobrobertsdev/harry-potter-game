@@ -1,16 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { CharacterService, Character } from '../character.service';
-import { PlayerService } from '../player.service'
-import { Router } from '@angular/router'
+import { PlayerService } from '../player.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-game',
   templateUrl: './game.component.html',
-  styleUrls: ['./game.component.css']
+  styleUrls: ['./game.component.css'],
 })
 export class GameComponent implements OnInit {
-
-  characters:  Character[] = [];
+  characters: Character[] = [];
   currentCharacter!: Character;
   round: number = 0;
   maxRounds: number = 10;
@@ -22,12 +21,12 @@ export class GameComponent implements OnInit {
     private characterService: CharacterService,
     private playerService: PlayerService,
     private router: Router
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.userHouse = this.playerService.getHouse() || '';
     this.characterService.getCharacters().subscribe((data) => {
-      this.characters = data.filter((char) => 
+      this.characters = data.filter((char) =>
         this.houses.includes(char.hogwartsHouse)
       );
 
@@ -56,7 +55,7 @@ export class GameComponent implements OnInit {
     if (correct) {
       delta += 5;
       if (isUserHouse) delta += 2;
-      this.feedback = 'Correct!'
+      this.feedback = 'Correct!';
     } else {
       delta -= 5;
       if (isUserHouse) delta -= 2;
@@ -65,12 +64,10 @@ export class GameComponent implements OnInit {
 
     const newScore = this.playerService.getScore() + delta;
     this.playerService.setScore(newScore);
-
     setTimeout(() => this.loadNextCharacter, 1500);
   }
 
   get currentScore() {
     return this.playerService.getScore();
   }
-
 }

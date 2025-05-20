@@ -10,9 +10,10 @@ nav {
     background-color: rgb(28, 0, 75);
     color: white;
     flex-wrap: wrap;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.title {
+nav .title {
     display: flex;
     align-items: center;
     font-family: 'Harry P', sans-serif;

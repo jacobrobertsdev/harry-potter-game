@@ -1,15 +1,56 @@
 import { Component, OnInit } from '@angular/core';
+import { PlayerService } from '../player.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-game-over',
   templateUrl: './game-over.component.html',
-  styleUrls: ['./game-over.component.css']
+  styleUrls: ['./game-over.component.css'],
 })
 export class GameOverComponent implements OnInit {
+  score: number = parseInt(localStorage.getItem('currentScore') || '0', 10);
+  playerName: string = '';
+  error: string = '';
 
-  constructor() { }
+  constructor(private playerData: PlayerService, private router: Router) {}
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  isNameTaken(name: string): boolean {
+    let players = JSON.parse(localStorage.getItem('leaderboard') || '[]');
+    return players.some(
+      (player: any) => player.name.toLowerCase() == name.toLowerCase()
+    );
   }
 
+  savePlayer() {
+    if (this.playerName) {
+      if (this.isNameTaken(this.playerName)) {
+        this.error = 'Name taken. Please choose a different name.';
+        return;
+      }
+      let players = JSON.parse(localStorage.getItem('leaderboard') || '[]');
+      players.push({ name: this.playerName, score: this.score });
+      localStorage.setItem('leaderboard', JSON.stringify(players));
+      this.error = '';
+    } else {
+      this.error = 'Please enter your name before proceeding.';
+    }
+  }
+
+  navToLeaderboard(event: Event) {
+    event.preventDefault();
+    this.savePlayer();
+    if (!this.error) {
+      this.router.navigate(['/leaderboard']);
+    }
+  }
+
+  navToHome(event: Event) {
+    event.preventDefault();
+    this.savePlayer();
+    if (!this.error) {
+      this.router.navigate(['/']);
+    }
+  }
 }
