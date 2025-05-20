@@ -1,1 +1,21 @@
-<p>game works!</p>
+<p>Game Works</p> 
+<div class="game-container" *ngIf="currentCharacter">
+    <h2>Round {{ round }} of {{ maxRounds }}</h2>
+    <h3>Score: {{ currentScore }}</h3>
+  
+    <img [src]="currentCharacter.image" alt="Character image" width="200" />
+    <h3>{{ currentCharacter.fullname }}</h3>
+  
+    <p>Which house do you think they belong to?</p>
+    <div class="house-buttons">
+      <button
+        *ngFor="let house of houses"
+        (click)="makeGuess(house)"
+        class="house-btn"
+      >
+        {{ house }}
+      </button>
+    </div>
+  
+    <p class="feedback">{{ feedback }}</p>
+  </div>
