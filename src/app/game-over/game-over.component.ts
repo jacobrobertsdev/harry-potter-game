@@ -16,7 +16,7 @@ export class GameOverComponent implements OnInit {
   constructor(private playerData: PlayerService, private router: Router) {}
 
   ngOnInit(): void {
-    this.score = this.playerData.getScore();
+    this.score = parseInt(localStorage.getItem('currentScore') || '0');
     this.house = this.playerData.getHouse();
   }
 
