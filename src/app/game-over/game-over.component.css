@@ -1,0 +1,39 @@
+.container {
+    margin-top: 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.name-input {
+    display: flex;
+    gap: .5rem;
+}
+
+input {
+    padding: .2rem
+}
+
+.buttons {
+    display: flex;
+    gap: 1rem
+}
+
+a {
+    background-color: rgb(28, 0, 75);
+    padding: 1rem;
+    color: white;
+    text-decoration: none;
+    border-radius: .5rem;
+    cursor: pointer;
+}
+
+a:hover {
+    background-color: rgb(71, 0, 194);
+}
+
+.error {
+    color: red;
+}
