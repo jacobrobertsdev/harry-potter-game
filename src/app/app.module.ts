@@ -8,6 +8,7 @@ import { GameComponent } from './game/game.component';
 import { GameOverComponent } from './game-over/game-over.component';
 import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     LeaderboardComponent,
     NavbarComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })
