@@ -4,7 +4,28 @@
         <img src="../../assets/trophy.png" alt="">
     </div>
 
-    <table *ngIf="players.length; else noPlayersMessage">
+    <table class="house-totals">
+        <caption>House Totals:</caption>
+        <thead>
+            <tr>
+                <th>Gryffindor</th>
+                <th>Slytherin</th>
+                <th>Hufflepuff</th>
+                <th>Ravenclaw</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ houseTotals.gryffindor }}</td>
+                <td>{{ houseTotals.slytherin }}</td>
+                <td>{{ houseTotals.hufflepuff }}</td>
+                <td>{{ houseTotals.ravenclaw }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table *ngIf="leaderboard.length; else noPlayersMessage">
+        <caption>Player Rankings:</caption>
         <thead>
             <tr>
                 <th>Rank</th>
