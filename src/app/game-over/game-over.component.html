@@ -1,1 +1,13 @@
-<p>game-over works!</p>
+<div class="container">
+    <h1>Game Over!</h1>
+    <h2>Final Score: {{ score }}</h2>
+    <div class="name-input">
+        <label for="name">Enter your name:</label>
+        <input type="text" [(ngModel)]="playerName" required placeholder="Player name...">
+    </div>
+    <div class="buttons">
+        <a (click)="navToLeaderboard($event)">Leaderboard</a>
+        <a (click)="navToHome($event)">New Game</a>
+    </div>
+    <p *ngIf="error" class="error">{{ error }}</p>
+</div>

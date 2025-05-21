@@ -1,19 +1,29 @@
 .game-container {
-    text-align: center;
-    padding: 20px;
-  }
-  
-  .house-buttons {
-    margin-top: 15px;
-  }
-  
-  .house-btn {
-    margin: 5px;
-    padding: 10px 20px;
-    font-size: 1.1rem;
-  }
-  
-  .feedback {
-    margin-top: 15px;
-    font-weight: bold;
-  }
+  text-align: center;
+  padding: 20px;
+}
+
+.round,
+.score {
+  margin-bottom: .5rem;
+}
+
+.house-buttons {
+  margin-top: 15px;
+}
+
+.house-btn {
+  margin: 5px;
+  padding: 10px 20px;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.feedback {
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+img {
+  margin: .7rem auto;
+}

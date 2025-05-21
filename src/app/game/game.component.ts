@@ -1,36 +1,57 @@
 import { Component, OnInit } from '@angular/core';
 import { CharacterService, Character } from '../character.service';
-import { PlayerService } from '../player.service'
-import { Router } from '@angular/router'
+import { PlayerService } from '../player.service';
+import { Router } from '@angular/router';
+import { Howl } from 'howler';
 
 @Component({
   selector: 'app-game',
   templateUrl: './game.component.html',
-  styleUrls: ['./game.component.css']
+  styleUrls: ['./game.component.css'],
 })
 export class GameComponent implements OnInit {
-
-  characters:  Character[] = [];
+  characters: Character[] = [];
   currentCharacter!: Character;
   round: number = 0;
   maxRounds: number = 10;
   userHouse: string = '';
   houses: string[] = ['Gryffindor', 'Hufflepuff', 'Ravenclaw', 'Slytherin'];
   feedback: string = '';
+  score: number = 0;
+  soundOn: boolean = true;
+  backgroundMusic: Howl | null = null;
+  characterSound: Howl | null = null;
+  characterWrong: Howl | null = null;
 
   constructor(
     private characterService: CharacterService,
     private playerService: PlayerService,
     private router: Router
-  ) { }
+  ) {
+    this.backgroundMusic = new Howl({
+      src: ['../assets/background-music.mp3'],
+      loop: true,
+      volume: 0.06,
+    });
+
+    this.characterSound = new Howl({
+      src: ['../assets/character-sound.mp3'],
+    });
+
+    this.characterWrong = new Howl ({
+      src: ['../assets/character-wrong.mp3']
+    })
+  }
 
   ngOnInit(): void {
+    if (this.backgroundMusic && this.soundOn) {
+      this.backgroundMusic.play();
+    }
+
+    this.score = parseInt(localStorage.getItem('currentScore') || '0');
     this.userHouse = this.playerService.getHouse() || '';
     this.characterService.getCharacters().subscribe((data) => {
-      this.characters = data.filter((char) => 
-        this.houses.includes(char.hogwartsHouse)
-      );
-
+      this.characters = data;
       this.loadNextCharacter();
     });
   }
@@ -47,7 +68,7 @@ export class GameComponent implements OnInit {
     this.feedback = '';
   }
 
-  makeGuess(selectedHouse: string) {
+  async makeGuess(selectedHouse: string) {
     const correct = selectedHouse === this.currentCharacter.hogwartsHouse;
     const isUserHouse = this.currentCharacter.hogwartsHouse === this.userHouse;
 
@@ -56,21 +77,33 @@ export class GameComponent implements OnInit {
     if (correct) {
       delta += 5;
       if (isUserHouse) delta += 2;
-      this.feedback = 'Correct!'
+      this.feedback = 'Correct!';
+      if (this.characterSound && this.soundOn) {
+        this.characterSound.play();
+      }
+  
     } else {
       delta -= 5;
       if (isUserHouse) delta -= 2;
       this.feedback = `Incorrect! The correct house was ${this.currentCharacter.hogwartsHouse}`;
+      if (this.characterWrong && this.soundOn) {
+        this.characterWrong.play();
+      }
     }
 
     const newScore = this.playerService.getScore() + delta;
-    this.playerService.setScore(newScore);
 
-    setTimeout(() => this.loadNextCharacter, 1500);
+   
+
+    await new Promise<void>((resolve) => {
+      setTimeout(() => {
+        this.loadNextCharacter();
+        this.playerService.setScore(newScore);
+        this.score = this.playerService.getScore();
+        resolve();
+      }, 1200);
+    });
+
+    this.characters.splice(this.characters.indexOf(this.currentCharacter), 1);
   }
-
-  get currentScore() {
-    return this.playerService.getScore();
-  }
-
 }
