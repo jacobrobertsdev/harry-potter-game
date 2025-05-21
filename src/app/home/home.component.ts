@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { PlayerService } from '../player.service';
 import { Router } from '@angular/router';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-home',
@@ -15,7 +16,8 @@ export class HomeComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private playerService: PlayerService,
-    private router: Router
+    private router: Router,
+    @Inject(DOCUMENT) private document: Document
   ) {
     this.form = this.fb.group({
       allowSounds: [false],
@@ -28,6 +30,13 @@ export class HomeComponent implements OnInit {
       allowSounds: this.playerService.getAllowSounds(),
       house: this.playerService.getHouse() || '',
     });
+  }
+
+  switchTheme(color: string) {
+    const root = this.document.documentElement;
+
+    root.style.setProperty('--background', color)
+
   }
 
   onSubmit(): void {

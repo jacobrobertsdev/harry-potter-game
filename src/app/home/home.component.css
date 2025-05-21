@@ -7,7 +7,7 @@
     width: 100vw;
 }
 
-.home-page > div {
+.home-page>div {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -17,12 +17,8 @@
 }
 
 
-button.selected {
-    background-color: #ffd700;
-    color: #000;
-}
 
-.home-page > div > div {
+.home-page>div>div {
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -30,12 +26,14 @@ button.selected {
     width: 40%;
 }
 
-.home-page > div > div > button {
+/*
+.home-page>div>div>button {
     width: 20%;
     height: 90%;
     border: none;
     font-size: 1.5rem;
 }
+
 
 button {
     height: 10%;
@@ -48,4 +46,36 @@ button {
 button:hover {
     background-color: darkslateblue;
     color: white;
+}
+    */
+
+.house-buttons {
+    width: 100%;
+    margin-top: 15px;
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.house-buttons img {
+    display: block;
+    max-width: 7rem;
+    height: 7rem;
+}
+
+.house-btn {
+    border: none;
+    background: none;
+    padding: 0;
+    margin: 0;
+    display: inline-block;
+    cursor: pointer;
+
+}
+
+img {
+    margin: .7rem auto;
+    max-width: 10rem;
 }

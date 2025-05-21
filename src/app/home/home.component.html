@@ -17,10 +17,15 @@
     <div>
         <h1>Choose Your House:</h1>
         <div>
-            <button *ngFor="let h of houses" type="button" [class.selected]="isHouseSelected(h)"
-                (click)="form.patchValue({ house: h })">
-                {{ h }}
-            </button>
+           
+            <button class="house-btn gryffindor" [class.selected]="isHouseSelected('Gryffindor')" (click)="switchTheme('#bf1f13'); form.patchValue({ house: 'Gryffindor' })"><img
+                    src="../../assets/gryffindor.png" alt=""></button>
+            <button class="house-btn hufflepuff" [class.selected]="isHouseSelected('Hufflepuff')" (click)="switchTheme('#f0c802'); form.patchValue({ house: 'Hufflepuff' }) "><img
+                    src="../../assets/hufflepuff.png" alt=""></button>
+            <button class="house-btn ravenclaw" [class.selected]="isHouseSelected('Ravenclaw')" (click)="switchTheme('#08178a'); form.patchValue({ house: 'Ravenclaw' })"><img src="../../assets/ravenclaw.png"
+                    alt=""></button>
+            <button class="house-btn slytherin" [class.selected]="isHouseSelected('Slytherin')" (click)="switchTheme('#087837'); form.patchValue({ house: 'Slytherin' })"><img src="../../assets/slytherin.png"
+                    alt=""></button>
         </div>
     </div>
 
