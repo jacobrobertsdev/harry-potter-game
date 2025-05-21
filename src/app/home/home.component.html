@@ -4,11 +4,11 @@
         <h1>Play Sounds?</h1>
         <div>
             <button type="button" [class.selected]="isSoundSelected(true)"
-                (click)="form.patchValue({ allowSounds: true })">
+                (click)="form.patchValue({ allowSounds: true }); enableSound()">
                 Yes
             </button>
             <button type="button" [class.selected]="isSoundSelected(false)"
-                (click)="form.patchValue({ allowSounds: false })">
+                (click)="form.patchValue({ allowSounds: false });  disableSound()">
                 No
             </button>
         </div>
@@ -28,4 +28,3 @@
         Play Game
     </button>
 </form>
-  

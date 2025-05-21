@@ -1,16 +1,24 @@
 <p>Game Works</p>
 <div class="game-container" *ngIf="currentCharacter">
-  <h2 class="round">Round {{ round }} of {{ maxRounds }}</h2>
-  <h3 class="score">Score: {{ score }}</h3>
-  <h4 class="name">{{ currentCharacter.fullName}}</h4>
+    <h2 class="round">Round {{ round }} of {{ maxRounds }}</h2>
+    <h3 class="score">Score: {{ score }}</h3>
+    <h4 class="name">{{ currentCharacter.fullName}}</h4>
+    <!-- <div class="frame-container">
+        <img [src]="currentCharacter.image" alt="Character image" class="character-image" />
+        <img src="../../assets/frame.png" alt="Chocolate Frog" class="frame">
+    </div> -->
 
-  <img [src]="currentCharacter.image" alt="Character image" width="200" />
 
-  <p>Which house does {{ currentCharacter.fullName }} belong to?</p>
-  <div class="house-buttons">
-    <button *ngFor="let house of houses" (click)="makeGuess(house)" class="house-btn">
-      {{ house }}
-    </button>
-  </div>
-  <p class="feedback">{{ feedback }}</p>
+    <p>Which house does {{ currentCharacter.fullName }} belong to?</p>
+    <div class="house-buttons">
+        <button class="house-btn gryffindor" (click)="makeGuess('Gryffindor')"><img src="../../assets/gryffindor.png"
+                alt=""></button>
+        <button class="house-btn hufflepuff" (click)="makeGuess('Hufflepuff')"><img src="../../assets/hufflepuff.png"
+                alt=""></button>
+        <button class="house-btn ravenclaw" (click)="makeGuess('Ravenclaw')"><img src="../../assets/ravenclaw.png"
+                alt=""></button>
+        <button class="house-btn slytherin" (click)="makeGuess('Slytherin')"><img src="../../assets/slytherin.png"
+                alt=""></button>
+    </div>
+    <p class="feedback">{{ feedback }}</p>
 </div>

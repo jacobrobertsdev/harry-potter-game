@@ -13,6 +13,7 @@ export class PlayerService {
   name: string | null = null;
   house: string | null = null;
   allowSounds: boolean = false;
+  backgroundMusic: Howl;
 
   constructor() {
     const json = localStorage.getItem(STORAGE_KEY);
@@ -21,9 +22,13 @@ export class PlayerService {
         const settings: PlayerSettings = JSON.parse(json);
         this.house = settings.house ?? this.house;
         this.allowSounds = settings.allowSounds ?? this.allowSounds;
-      } catch {
-      }
+      } catch {}
     }
+    this.backgroundMusic = new Howl({
+      src: ['../assets/background-music.mp3'],
+      loop: true,
+      volume: 0.06,
+    });
   }
 
   setScore(newScore: number) {
@@ -51,6 +56,7 @@ export class PlayerService {
   setAllowSounds(allow: boolean) {
     this.allowSounds = allow;
     this.saveSettings();
+    allow ? this.backgroundMusic.play() : this.backgroundMusic.stop();
   }
 
   getAllowSounds(): boolean {
