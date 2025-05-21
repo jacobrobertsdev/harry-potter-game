@@ -8,55 +8,23 @@ import { PlayerService } from 'src/app/player.service';
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent implements OnInit {
-  onGameOverPage: boolean = this.router.url === '/game-over';
+  showNavLinks: boolean = true;
+  house: string | null = '';
 
-  onGamePage: boolean = this.router.url == '/game';
-
-
-  constructor(private router: Router, private playerService: PlayerService) { }
+  constructor(private router: Router, private playerService: PlayerService) {}
 
   ngOnInit(): void {
-    this.onGameOverPage = this.router.url === '/game-over';
+    this.updateNavLinksVisibility(this.router.url);
 
-    // Subscribe to route changes
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        this.onGameOverPage = event.urlAfterRedirects === '/game-over';
+        this.updateNavLinksVisibility(event.urlAfterRedirects);
+        this.house = this.playerService.getHouse();
       }
     });
   }
 
-  /*
-  navToHome() {
-    if (this.onGamePage) {
-      let userResponse = confirm("This will reset your game");
-      if (userResponse) {
-        localStorage.setItem('currentScore', JSON.stringify(0));
-        localStorage.setItem('hp-player', JSON.stringify({}));
-        this.router.navigate(['']);
-      } else {
-        return;
-      }
-    } 
-    this.router.navigate(['']);
+  private updateNavLinksVisibility(url: string): void {
+    this.showNavLinks = !(url === '/game' || url === '/game-over');
   }
-    */
-
-  navToHome(event: MouseEvent) {
-    // Prevent the default anchor tag behavior
-    event.preventDefault();
-
-    if (this.onGamePage) {
-      const userResponse = confirm("This will reset your game. Do you want to continue?");
-      if (userResponse) {
-        // Reset game logic
-        localStorage.setItem('currentScore', JSON.stringify(0));
-        localStorage.setItem('hp-player', JSON.stringify({}));
-        this.router.navigate(['']); // Navigate to home
-      }
-    } else {
-      this.router.navigate(['']); // Navigate to home if not on game page
-    }
-  }
-
 }
