@@ -90,9 +90,9 @@ export class GameComponent implements OnInit {
 
     await new Promise<void>((resolve) => {
       setTimeout(() => {
-        this.loadNextCharacter();
         this.playerService.setScore(newScore);
-        this.score = this.playerService.getScore();
+        this.score = newScore;
+        this.loadNextCharacter();
         resolve();
       }, 1200);
     });
