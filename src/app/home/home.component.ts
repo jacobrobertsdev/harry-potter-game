@@ -26,20 +26,18 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.switchTheme('rgb(28, 0, 75)')
+    this.switchTheme('rgb(28, 0, 75)');
     this.form.patchValue({
-      // allowSounds: this.playerService.getAllowSounds(),
+      allowSounds: this.playerService.getAllowSounds(),
       // house: this.playerService.getHouse() || '',
-      house: ''
+      house: '',
     });
-    console.log(this.form.value)
+    console.log(this.form.value);
   }
 
   switchTheme(color: string) {
     const root = this.document.documentElement;
-
-    root.style.setProperty('--background', color)
-
+    root.style.setProperty('--background', color);
   }
 
   onSubmit(): void {

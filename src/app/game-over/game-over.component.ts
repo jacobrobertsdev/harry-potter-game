@@ -52,7 +52,6 @@ export class GameOverComponent implements OnInit {
   navToLeaderboard(event: Event) {
     event.preventDefault();
     this.savePlayer();
-    this.clearConfig();
     if (!this.error) {
       this.router.navigate(['/leaderboard']);
     }
