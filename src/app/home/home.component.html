@@ -15,7 +15,7 @@
     </div>
 
     <div>
-        <h1>Choose Your House:</h1>
+        <h1>Choose Your House To Begin!:</h1>
         <div>
            
             <button class="house-btn gryffindor" [class.selected]="isHouseSelected('Gryffindor')" (click)="switchTheme('#bf1f13'); form.patchValue({ house: 'Gryffindor' })"><img
@@ -29,7 +29,5 @@
         </div>
     </div>
 
-    <button type="submit" [disabled]="!form.value.house">
-        Play Game
-    </button>
+    
 </form>

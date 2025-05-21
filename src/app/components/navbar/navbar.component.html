@@ -6,7 +6,7 @@
         <img src="../../../assets/sorting-hat.png" alt="Sorting Hat">
     </div>
     <div class="links" *ngIf="!onGameOverPage">
-        <a routerLink="/">Home</a>
+        <a href='#' (click)='navToHome($event)'>Home</a>
         <a routerLink="/leaderboard">Leaderboard</a>
     </div>
 </nav>
