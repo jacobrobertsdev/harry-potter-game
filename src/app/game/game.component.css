@@ -24,7 +24,7 @@
   height: 7rem;
 }
 
-/* .frame-container {
+.frame-container {
   position: relative;
   width: 100%;
 }
@@ -37,7 +37,7 @@
   width: 50rem;
   box-sizing: border-box;
   z-index: 10;
-} */
+}
 
 .house-btn {
   border: none;
