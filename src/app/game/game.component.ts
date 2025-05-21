@@ -21,6 +21,7 @@ export class GameComponent implements OnInit {
   soundOn: boolean = true;
   backgroundMusic: Howl | null = null;
   characterSound: Howl | null = null;
+  characterWrong: Howl | null = null;
 
   constructor(
     private characterService: CharacterService,
@@ -36,6 +37,10 @@ export class GameComponent implements OnInit {
     this.characterSound = new Howl({
       src: ['../assets/character-sound.mp3'],
     });
+
+    this.characterWrong = new Howl ({
+      src: ['../assets/character-wrong.mp3']
+    })
   }
 
   ngOnInit(): void {
@@ -73,17 +78,22 @@ export class GameComponent implements OnInit {
       delta += 5;
       if (isUserHouse) delta += 2;
       this.feedback = 'Correct!';
+      if (this.characterSound && this.soundOn) {
+        this.characterSound.play();
+      }
+  
     } else {
       delta -= 5;
       if (isUserHouse) delta -= 2;
       this.feedback = `Incorrect! The correct house was ${this.currentCharacter.hogwartsHouse}`;
+      if (this.characterWrong && this.soundOn) {
+        this.characterWrong.play();
+      }
     }
 
     const newScore = this.playerService.getScore() + delta;
 
-    if (this.characterSound && this.soundOn) {
-      this.characterSound.play();
-    }
+   
 
     await new Promise<void>((resolve) => {
       setTimeout(() => {
