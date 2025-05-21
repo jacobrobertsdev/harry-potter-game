@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
   form: FormGroup;
@@ -19,20 +19,19 @@ export class HomeComponent implements OnInit {
   ) {
     this.form = this.fb.group({
       allowSounds: [false],
-      house: ['']
+      house: [''],
     });
   }
 
   ngOnInit(): void {
     this.form.patchValue({
       allowSounds: this.playerService.getAllowSounds(),
-      house: this.playerService.getHouse() || ''
+      house: this.playerService.getHouse() || '',
     });
   }
 
   onSubmit(): void {
     const { allowSounds, house } = this.form.value;
-    this.playerService.setAllowSounds(allowSounds);
     this.playerService.setHouse(house);
     this.router.navigate(['/game']);
     console.log('RAW LS:', localStorage.getItem('hp-player'));
@@ -43,5 +42,13 @@ export class HomeComponent implements OnInit {
   }
   isSoundSelected(val: boolean) {
     return this.form.value.allowSounds === val;
+  }
+
+  enableSound() {
+    this.playerService.setAllowSounds(true);
+  }
+
+  disableSound() {
+    this.playerService.setAllowSounds(false);
   }
 }

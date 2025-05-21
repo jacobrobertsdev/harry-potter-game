@@ -13,40 +13,34 @@ export class GameComponent implements OnInit {
   characters: Character[] = [];
   currentCharacter!: Character;
   round: number = 0;
-  maxRounds: number = 10;
+  maxRounds: number = 6;
   userHouse: string = '';
   houses: string[] = ['Gryffindor', 'Hufflepuff', 'Ravenclaw', 'Slytherin'];
   feedback: string = '';
   score: number = 0;
   soundOn: boolean = true;
-  backgroundMusic: Howl | null = null;
   characterSound: Howl | null = null;
   characterWrong: Howl | null = null;
+  playerConfig: any;
 
   constructor(
     private characterService: CharacterService,
     private playerService: PlayerService,
     private router: Router
   ) {
-    this.backgroundMusic = new Howl({
-      src: ['../assets/background-music.mp3'],
-      loop: true,
-      volume: 0.06,
-    });
-
     this.characterSound = new Howl({
       src: ['../assets/character-sound.mp3'],
     });
 
-    this.characterWrong = new Howl ({
-      src: ['../assets/character-wrong.mp3']
-    })
+    this.characterWrong = new Howl({
+      src: ['../assets/character-wrong.mp3'],
+    });
   }
 
   ngOnInit(): void {
-    if (this.backgroundMusic && this.soundOn) {
-      this.backgroundMusic.play();
-    }
+    let config = localStorage.getItem('hp-player');
+    if (config) this.playerConfig = JSON.parse(config);
+    this.soundOn = this.playerConfig['allowSounds'];
 
     this.score = parseInt(localStorage.getItem('currentScore') || '0');
     this.userHouse = this.playerService.getHouse() || '';
@@ -81,7 +75,6 @@ export class GameComponent implements OnInit {
       if (this.characterSound && this.soundOn) {
         this.characterSound.play();
       }
-  
     } else {
       delta -= 5;
       if (isUserHouse) delta -= 2;
@@ -92,8 +85,6 @@ export class GameComponent implements OnInit {
     }
 
     const newScore = this.playerService.getScore() + delta;
-
-   
 
     await new Promise<void>((resolve) => {
       setTimeout(() => {
