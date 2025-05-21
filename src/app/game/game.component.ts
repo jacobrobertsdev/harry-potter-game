@@ -45,7 +45,7 @@ export class GameComponent implements OnInit {
     this.feedback = '';
   }
 
-  makeGuess(selectedHouse: string) {
+  async makeGuess(selectedHouse: string) {
     const correct = selectedHouse === this.currentCharacter.hogwartsHouse;
     const isUserHouse = this.currentCharacter.hogwartsHouse === this.userHouse;
 
@@ -62,10 +62,16 @@ export class GameComponent implements OnInit {
     }
 
     const newScore = this.playerService.getScore() + delta;
-    this.playerService.setScore(newScore);
-    this.score = this.playerService.getScore();
+
+    await new Promise<void>((resolve) => {
+      setTimeout(() => {
+        this.loadNextCharacter();
+        this.playerService.setScore(newScore);
+        this.score = this.playerService.getScore();
+        resolve();
+      }, 1200);
+    });
 
     this.characters.splice(this.characters.indexOf(this.currentCharacter), 1);
-    setTimeout(() => this.loadNextCharacter(), 1000);
   }
 }
