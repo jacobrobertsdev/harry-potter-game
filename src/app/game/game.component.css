@@ -2,11 +2,49 @@
   width: 100vw;
   text-align: center;
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile {
+  width: fit-content;
+  box-shadow: 0px 6px 9px -5px purple;
+  border-radius: 1rem;
+  padding: .5rem;
+  margin-bottom: 1rem;
+  transition: box-shadow 0.7s ease;
+}
+
+.profile:hover {
+  box-shadow: none;
+}
+
+.stats {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  padding: 0 3rem;
+  width: 100%
 }
 
 .round,
 .score {
-  margin-bottom: .5rem;
+  font-family: 'Harry P', sans-serif;
+  font-size: 2.2rem;
+  letter-spacing: .15rem;
+  font-weight: bold;
+  border-radius: 1rem;
+  padding: 1rem;
+  box-shadow: 0px 6px 9px -5px purple;
+  transition: box-shadow 0.7s ease;
+}
+
+.round:hover,
+.score:hover {
+  box-shadow: none;
 }
 
 .house-buttons {
@@ -21,7 +59,12 @@
 .house-buttons img {
   display: block;
   max-width: 7rem;
-  height: 7rem;
+  max-height: 7rem;
+  transition: transform 0.2s ease
+}
+
+.house-buttons img:hover {
+  transform: translate(0px, 5px);
 }
 
 .frame-container {
@@ -50,11 +93,14 @@
 }
 
 .feedback {
-  margin-top: 15px;
   font-weight: bold;
 }
 
 img {
-  margin: .7rem auto;
-  max-width: 10rem;
+  margin-top: .5rem;
+  max-height: 15rem;
+}
+
+.name {
+  font-weight: bold;
 }

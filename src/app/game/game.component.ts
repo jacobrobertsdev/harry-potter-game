@@ -30,10 +30,12 @@ export class GameComponent implements OnInit {
   ) {
     this.characterSound = new Howl({
       src: ['../assets/character-sound.mp3'],
+      volume: 0.06,
     });
 
     this.characterWrong = new Howl({
       src: ['../assets/character-wrong.mp3'],
+      volume: 0.06,
     });
   }
 

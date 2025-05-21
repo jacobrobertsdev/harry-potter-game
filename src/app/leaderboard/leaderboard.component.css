@@ -1,7 +1,13 @@
 table {
     width: 100%;
-    border: 2px solid black;
+    border: 1px solid black;
     border-collapse: collapse;
+    box-shadow: 0px 6px 12px -5px purple;
+    transition: box-shadow 0.7s ease;
+}
+
+table:hover {
+    box-shadow: none;
 }
 
 img {
@@ -42,4 +48,28 @@ td {
 
 th {
     background-color: #f2f2f2;
+    letter-spacing: .05rem;
+}
+
+.gr {
+    background-color: #9b180f;
+}
+
+.sl {
+    background-color: #065b2a;
+}
+
+.hu {
+    background-color: #d3b000;
+}
+
+.ra {
+    background-color: #000e7b;
+}
+
+.gr,
+.sl,
+.hu,
+.ra {
+    color: white;
 }

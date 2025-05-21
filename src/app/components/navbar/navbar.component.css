@@ -21,6 +21,7 @@ nav {
     font-family: 'Harry P', sans-serif;
     font-size: 1.5rem;
     letter-spacing: .15rem;
+    margin-left: 6rem;
 }
 
 a {
@@ -30,5 +31,7 @@ a {
 }
 
 img {
-    max-width: 3.2rem;
+    max-width: 3rem;
+    margin: 0;
+    padding: 0
 }
