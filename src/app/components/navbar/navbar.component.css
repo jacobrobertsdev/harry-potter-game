@@ -7,7 +7,7 @@ nav {
     justify-content: space-between;
     align-items: center;
     height: 4rem;
-    background-color: rgb(28, 0, 75);
+    background-color: var(--background);
     color: white;
     flex-wrap: wrap;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
