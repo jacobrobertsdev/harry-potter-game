@@ -1,6 +1,5 @@
 <form class="home-page fadeIn" [formGroup]="form" (ngSubmit)="onSubmit()">
 
-    <!-- Play Sounds -->
     <div>
         <h1>Play Sounds?</h1>
         <div>
@@ -15,7 +14,6 @@
         </div>
     </div>
 
-    <!-- Choose House -->
     <div>
         <h1>Choose Your House:</h1>
         <div>
@@ -26,7 +24,6 @@
         </div>
     </div>
 
-    <!-- This button now submits the form and then navigates -->
     <button type="submit" [disabled]="!form.value.house">
         Play Game
     </button>

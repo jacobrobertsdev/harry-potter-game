@@ -34,8 +34,8 @@ export class HomeComponent implements OnInit {
     const { allowSounds, house } = this.form.value;
     this.playerService.setAllowSounds(allowSounds);
     this.playerService.setHouse(house);
-    // now go to game
     this.router.navigate(['/game']);
+    console.log('RAW LS:', localStorage.getItem('hp-player'));
   }
 
   isHouseSelected(h: string) {
