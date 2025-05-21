@@ -1,5 +1,11 @@
 import { Injectable } from '@angular/core';
 
+export interface Player {
+  name: string;
+  score: number;
+  house: string;
+}
+
 @Injectable({
   providedIn: 'root',
 })
