@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 export interface Character {
-  fullname: string;
+  fullName: string;
   nickname: string;
   hogwartsHouse: string;
   interpretedBy: string;

@@ -28,10 +28,7 @@ export class GameComponent implements OnInit {
     this.score = parseInt(localStorage.getItem('currentScore') || '0');
     this.userHouse = this.playerService.getHouse() || '';
     this.characterService.getCharacters().subscribe((data) => {
-      this.characters = data.filter((char) =>
-        this.houses.includes(char.hogwartsHouse)
-      );
-
+      this.characters = data;
       this.loadNextCharacter();
     });
   }
@@ -68,6 +65,7 @@ export class GameComponent implements OnInit {
     this.playerService.setScore(newScore);
     this.score = this.playerService.getScore();
 
-    setTimeout(() => this.loadNextCharacter, 1500);
+    this.characters.splice(this.characters.indexOf(this.currentCharacter), 1);
+    setTimeout(() => this.loadNextCharacter(), 1000);
   }
 }

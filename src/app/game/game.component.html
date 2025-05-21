@@ -1,17 +1,16 @@
 <p>Game Works</p>
 <div class="game-container" *ngIf="currentCharacter">
-  <h2>Round {{ round }} of {{ maxRounds }}</h2>
-  <h3>Score: {{ score }}</h3>
+  <h2 class="round">Round {{ round }} of {{ maxRounds }}</h2>
+  <h3 class="score">Score: {{ score }}</h3>
+  <h4 class="name">{{ currentCharacter.fullName}}</h4>
 
   <img [src]="currentCharacter.image" alt="Character image" width="200" />
-  <h3>{{ currentCharacter.fullname }}</h3>
 
-  <p>Which house do you think they belong to?</p>
+  <p>Which house does {{ currentCharacter.fullName }} belong to?</p>
   <div class="house-buttons">
     <button *ngFor="let house of houses" (click)="makeGuess(house)" class="house-btn">
       {{ house }}
     </button>
   </div>
-  <a routerLink="/game-over">GAME OVER PAGE</a>
   <p class="feedback">{{ feedback }}</p>
 </div>
