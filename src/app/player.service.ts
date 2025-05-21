@@ -27,7 +27,7 @@ export class PlayerService {
     this.backgroundMusic = new Howl({
       src: ['../assets/background-music.mp3'],
       loop: true,
-      volume: 0.06,
+      volume: 0.4,
     });
   }
 
