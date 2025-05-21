@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { PlayerService } from '../player.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -6,10 +9,39 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  form: FormGroup;
+  houses = ['Slytherin', 'Ravenclaw', 'Gryffindor', 'Hufflepuff'];
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(
+    private fb: FormBuilder,
+    private playerService: PlayerService,
+    private router: Router
+  ) {
+    this.form = this.fb.group({
+      allowSounds: [false],
+      house: ['']
+    });
   }
 
+  ngOnInit(): void {
+    this.form.patchValue({
+      allowSounds: this.playerService.getAllowSounds(),
+      house: this.playerService.getHouse() || ''
+    });
+  }
+
+  onSubmit(): void {
+    const { allowSounds, house } = this.form.value;
+    this.playerService.setAllowSounds(allowSounds);
+    this.playerService.setHouse(house);
+    this.router.navigate(['/game']);
+    console.log('RAW LS:', localStorage.getItem('hp-player'));
+  }
+
+  isHouseSelected(h: string) {
+    return this.form.value.house === h;
+  }
+  isSoundSelected(val: boolean) {
+    return this.form.value.allowSounds === val;
+  }
 }

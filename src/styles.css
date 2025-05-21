@@ -11,3 +11,25 @@ body {
     align-items: center;
     justify-content: center;
 }
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.fadeIn {
+    animation-delay: 0;
+    animation-name: fadeIn;
+    animation-timing-function: ease-in-out;
+    animation-duration: .5s;
+}
+
+button {
+    cursor: pointer;
+    border-radius: 10px;
+}

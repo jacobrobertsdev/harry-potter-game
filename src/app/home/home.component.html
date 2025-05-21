@@ -1,2 +1,31 @@
-<p>home works!</p>
-<a routerLink="/game">game</a>
+<form class="home-page fadeIn" [formGroup]="form" (ngSubmit)="onSubmit()">
+
+    <div>
+        <h1>Play Sounds?</h1>
+        <div>
+            <button type="button" [class.selected]="isSoundSelected(true)"
+                (click)="form.patchValue({ allowSounds: true })">
+                Yes
+            </button>
+            <button type="button" [class.selected]="isSoundSelected(false)"
+                (click)="form.patchValue({ allowSounds: false })">
+                No
+            </button>
+        </div>
+    </div>
+
+    <div>
+        <h1>Choose Your House:</h1>
+        <div>
+            <button *ngFor="let h of houses" type="button" [class.selected]="isHouseSelected(h)"
+                (click)="form.patchValue({ house: h })">
+                {{ h }}
+            </button>
+        </div>
+    </div>
+
+    <button type="submit" [disabled]="!form.value.house">
+        Play Game
+    </button>
+</form>
+  
