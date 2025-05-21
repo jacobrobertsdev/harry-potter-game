@@ -26,10 +26,13 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.switchTheme('rgb(28, 0, 75)')
     this.form.patchValue({
-      allowSounds: this.playerService.getAllowSounds(),
-      house: this.playerService.getHouse() || '',
+      // allowSounds: this.playerService.getAllowSounds(),
+      // house: this.playerService.getHouse() || '',
+      house: ''
     });
+    console.log(this.form.value)
   }
 
   switchTheme(color: string) {
@@ -40,7 +43,7 @@ export class HomeComponent implements OnInit {
   }
 
   onSubmit(): void {
-    const { allowSounds, house } = this.form.value;
+    const { house } = this.form.value;
     this.playerService.setHouse(house);
     this.router.navigate(['/game']);
     console.log('RAW LS:', localStorage.getItem('hp-player'));
@@ -49,6 +52,7 @@ export class HomeComponent implements OnInit {
   isHouseSelected(h: string) {
     return this.form.value.house === h;
   }
+
   isSoundSelected(val: boolean) {
     return this.form.value.allowSounds === val;
   }

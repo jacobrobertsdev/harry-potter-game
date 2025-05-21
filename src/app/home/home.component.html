@@ -3,11 +3,11 @@
     <div>
         <h1>Play Sounds?</h1>
         <div>
-            <button type="button" [class.selected]="isSoundSelected(true)"
+            <button class="sound-btns yes-btn" type="button" [class.selected]="isSoundSelected(true)"
                 (click)="form.patchValue({ allowSounds: true }); enableSound()">
                 Yes
             </button>
-            <button type="button" [class.selected]="isSoundSelected(false)"
+            <button class="sound-btns no-btn" type="button" [class.selected]="isSoundSelected(false)"
                 (click)="form.patchValue({ allowSounds: false });  disableSound()">
                 No
             </button>
@@ -29,5 +29,7 @@
         </div>
     </div>
 
-    
+    <button routerLink="/game" class="play-game" type="submit" [disabled]="!form.value.house">
+        Play
+    </button>
 </form>
