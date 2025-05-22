@@ -37,7 +37,6 @@ export class HomeComponent implements OnInit {
     const { house } = this.form.value;
     this.playerService.setHouse(house);
     this.router.navigate(['/game']);
-    console.log('RAW LS:', localStorage.getItem('hp-player'));
   }
 
   isHouseSelected(h: string) {
