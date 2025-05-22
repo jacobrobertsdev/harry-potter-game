@@ -30,7 +30,7 @@ export class GameComponent implements OnInit {
   ) {
     this.characterSound = new Howl({
       src: ['../assets/character-sound.mp3'],
-      volume: 0.06,
+      volume: 0.08,
     });
 
     this.characterWrong = new Howl({
@@ -40,16 +40,18 @@ export class GameComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.characterService.getCharacters().subscribe((data) => {
+      this.characters = data;
+      this.loadNextCharacter();
+    });
+
     let config = localStorage.getItem('hp-player');
     if (config) this.playerConfig = JSON.parse(config);
     this.soundOn = this.playerConfig['allowSounds'];
 
     this.score = parseInt(localStorage.getItem('currentScore') || '0');
+    this.round = parseInt(localStorage.getItem('currentRound') || '0');
     this.userHouse = this.playerService.getHouse() || '';
-    this.characterService.getCharacters().subscribe((data) => {
-      this.characters = data;
-      this.loadNextCharacter();
-    });
   }
 
   loadNextCharacter() {

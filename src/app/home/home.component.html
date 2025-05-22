@@ -19,16 +19,16 @@
         <div class="house-buttons">
 
             <button class="house-btn gryffindor" [class.selected]="isHouseSelected('Gryffindor')"
-                (click)="switchTheme('#bf1f13'); form.patchValue({ house: 'Gryffindor' })"><img
+                (click)="setTheme('#bf1f13'); form.patchValue({ house: 'Gryffindor' })"><img
                     src="../../assets/gryffindor.png" alt=""></button>
             <button class="house-btn hufflepuff" [class.selected]="isHouseSelected('Hufflepuff')"
-                (click)="switchTheme('#f0c802'); form.patchValue({ house: 'Hufflepuff' }) "><img
+                (click)="setTheme('#f0c802'); form.patchValue({ house: 'Hufflepuff' }) "><img
                     src="../../assets/hufflepuff.png" alt=""></button>
             <button class="house-btn ravenclaw" [class.selected]="isHouseSelected('Ravenclaw')"
-                (click)="switchTheme('#08178a'); form.patchValue({ house: 'Ravenclaw' })"><img
+                (click)="setTheme('#08178a'); form.patchValue({ house: 'Ravenclaw' })"><img
                     src="../../assets/ravenclaw.png" alt=""></button>
             <button class="house-btn slytherin" [class.selected]="isHouseSelected('Slytherin')"
-                (click)="switchTheme('#087837'); form.patchValue({ house: 'Slytherin' })"><img
+                (click)="setTheme('#087837'); form.patchValue({ house: 'Slytherin' })"><img
                     src="../../assets/slytherin.png" alt=""></button>
         </div>
     </div>
