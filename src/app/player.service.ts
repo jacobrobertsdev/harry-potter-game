@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-
+import { Inject, Injectable } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
 const STORAGE_KEY = 'hp-player';
 
 export interface PlayerSettings {
@@ -15,7 +15,7 @@ export class PlayerService {
   allowSounds: boolean = false;
   backgroundMusic: Howl;
 
-  constructor() {
+  constructor(@Inject(DOCUMENT) private document: Document) {
     const json = localStorage.getItem(STORAGE_KEY);
     if (json) {
       try {
@@ -29,6 +29,11 @@ export class PlayerService {
       loop: true,
       volume: 0.4,
     });
+  }
+  switchTheme(color: string) {
+    localStorage.setItem('theme', JSON.stringify(color));
+    const root = this.document.documentElement;
+    root.style.setProperty('--background', color);
   }
 
   setScore(newScore: number) {

@@ -14,6 +14,9 @@ export class NavbarComponent implements OnInit {
   constructor(private router: Router, private playerService: PlayerService) {}
 
   ngOnInit(): void {
+    this.playerService.switchTheme(
+      JSON.parse(localStorage.getItem('theme') || '#1c004b')
+    );
     this.updateNavLinksVisibility(this.router.url);
 
     this.router.events.subscribe((event) => {
