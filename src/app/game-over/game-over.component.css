@@ -1,7 +1,6 @@
 .container {
     width: 100vw;
     height: 100vh;
-    padding-top: 10rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -32,12 +31,13 @@ input {
 }
 
 .buttons {
+    margin-top: 1rem;
     display: flex;
     gap: 1rem
 }
 
-a {
-    background-color: rgb(28, 0, 75);
+.buttons a {
+    background-color: rgb(72, 0, 172);
     padding: 1rem;
     color: white;
     text-decoration: none;
@@ -45,18 +45,18 @@ a {
     cursor: pointer;
 }
 
-a:hover {
-    background-color: rgb(71, 0, 194);
+.buttons a:hover {
+    background-color: rgb(93, 0, 255);
 }
 
 .error {
     color: red;
 }
 
-.attribution {
+div .attribution {
     position: fixed;
     bottom: 1rem;
     right: 1rem;
     color: white;
     font-size: .5rem;
-  }
+}

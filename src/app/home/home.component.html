@@ -8,7 +8,7 @@
                 Yes
             </button>
             <button class="sound-btns no-btn" type="button" [class.selected]="isSoundSelected(false)"
-                (click)="form.patchValue({ allowSounds: false });  disableSound()">
+                (click)="form.patchValue({ allowSounds: false }); disableSound()">
                 No
             </button>
         </div>
@@ -17,23 +17,29 @@
     <div class="house-settings">
         <h2>Choose Your House To Begin!</h2>
         <div class="house-buttons">
-
             <button class="house-btn gryffindor" [class.selected]="isHouseSelected('Gryffindor')"
-                (click)="setTheme('#bf1f13'); form.patchValue({ house: 'Gryffindor' })"><img
-                    src="../../assets/gryffindor.png" alt=""></button>
+                (click)="setTheme('#7a0000'); form.patchValue({ house: 'Gryffindor' })">
+                <img src="../../assets/gryffindor.png" alt="" />
+            </button>
             <button class="house-btn hufflepuff" [class.selected]="isHouseSelected('Hufflepuff')"
-                (click)="setTheme('#f0c802'); form.patchValue({ house: 'Hufflepuff' }) "><img
-                    src="../../assets/hufflepuff.png" alt=""></button>
+                (click)="setTheme('#9c7700'); form.patchValue({ house: 'Hufflepuff' })">
+                <img src="../../assets/hufflepuff.png" alt="" />
+            </button>
             <button class="house-btn ravenclaw" [class.selected]="isHouseSelected('Ravenclaw')"
-                (click)="setTheme('#08178a'); form.patchValue({ house: 'Ravenclaw' })"><img
-                    src="../../assets/ravenclaw.png" alt=""></button>
-            <button class="house-btn slytherin" [class.selected]="isHouseSelected('Slytherin')"
-                (click)="setTheme('#087837'); form.patchValue({ house: 'Slytherin' })"><img
-                    src="../../assets/slytherin.png" alt=""></button>
+                (click)="setTheme('#053e66'); form.patchValue({ house: 'Ravenclaw' })">
+                <img src="../../assets/ravenclaw.png" alt="" />
+            </button>
+            <button class="house-btn slytherin" [class.selected]="isHouseSelected('Slytherin')" (click)="
+          setTheme(
+            '#345c0d
+'
+          );
+          form.patchValue({ house: 'Slytherin' })
+        ">
+                <img src="../../assets/slytherin.png" alt="" />
+            </button>
         </div>
     </div>
-
 </form>
 <a class="attribution" href="https://www.vecteezy.com/free-vector/hogwarts-school" target="_blank">Hogwarts School
-    Vectors by
-    Vecteezy</a>
+    Vectors by Vecteezy</a>
