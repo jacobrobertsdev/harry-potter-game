@@ -53,6 +53,8 @@ export class GameOverComponent implements OnInit {
     event.preventDefault();
     this.savePlayer();
     if (!this.error) {
+      this.playerData.setScore(0);
+      this.playerData.setRound(1);
       this.router.navigate(['/leaderboard']);
     }
   }
@@ -60,8 +62,10 @@ export class GameOverComponent implements OnInit {
   navToHome(event: Event) {
     event.preventDefault();
     this.savePlayer();
-    this.clearConfig();
     if (!this.error) {
+      this.playerData.setScore(0);
+      this.playerData.setRound(1);
+      this.clearConfig();
       this.router.navigate(['/']);
     }
   }
