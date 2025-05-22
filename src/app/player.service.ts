@@ -10,6 +10,7 @@ export interface PlayerSettings {
 @Injectable({ providedIn: 'root' })
 export class PlayerService {
   score: number = 0;
+  round: number = 1;
   name: string | null = null;
   house: string | null = null;
   allowSounds: boolean = false;
@@ -27,7 +28,7 @@ export class PlayerService {
     this.backgroundMusic = new Howl({
       src: ['../assets/background-music.mp3'],
       loop: true,
-      volume: 0.4,
+      volume: 0.3,
     });
   }
   switchTheme(color: string) {
@@ -41,8 +42,17 @@ export class PlayerService {
     localStorage.setItem('currentScore', JSON.stringify(newScore));
   }
   getScore() {
-    return this.score;
+    return parseInt(localStorage.getItem('currentScore') || '0');
   }
+
+  setRound(nextRound: number) {
+    this.round = nextRound;
+    localStorage.setItem('currentRound', JSON.stringify(nextRound));
+  }
+  getRound() {
+    return parseInt(localStorage.getItem('currentRound') || '1');
+  }
+
   setName(newName: string) {
     this.name = newName;
   }
@@ -74,5 +84,9 @@ export class PlayerService {
       allowSounds: this.allowSounds,
     };
     localStorage.setItem(STORAGE_KEY, JSON.stringify(settings));
+  }
+
+  playBackgroundMusic() {
+    this.backgroundMusic.play();
   }
 }
