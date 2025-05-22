@@ -5,7 +5,6 @@
 }
 
 body {
-    padding-top: 2rem;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     display: flex;
     flex-direction: column;
@@ -17,5 +16,5 @@ body {
 }
 
 :root {
-    --background: #1c004b;
+    --background: #00000000;
 }
