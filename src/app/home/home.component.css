@@ -3,7 +3,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 4rem;
+    gap: 2rem;
     height: 100vh;
     width: 100vw;
     background-image:
@@ -15,13 +15,21 @@
     color: white;
 }
 
+h1 {
+    font-family: 'Harry P', sans-serif;
+    font-size: 5rem;
+    letter-spacing: .15rem;
+    opacity: 1;
+}
+
 .sound-settings {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 100%;
-    gap: 1rem
+    gap: 1rem;
+    margin-bottom: 2rem;
 }
 
 .house-settings {
@@ -51,7 +59,7 @@
 
 img {
     max-width: 7rem;
-    height: 7rem;
+    max-height: 7rem;
     transition: .2s ease-in-out;
 }
 
@@ -105,4 +113,21 @@ img:hover {
     right: 1rem;
     color: white;
     font-size: .5rem;
+}
+
+.fade-in {
+    animation: fadeIn 2s ease-in forwards;
+    /* Apply the fade-in animation */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        /* Start fully transparent */
+    }
+
+    to {
+        opacity: 1;
+        /* End fully opaque */
+    }
 }
