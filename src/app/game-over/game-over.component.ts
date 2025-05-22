@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 })
 export class GameOverComponent implements OnInit {
   score: number = 0;
+  displayedScore: number = 0; // This will be used for the animated score
   playerName: string = '';
   house: string | null = '';
   error: string = '';
@@ -16,20 +17,21 @@ export class GameOverComponent implements OnInit {
   constructor(private playerData: PlayerService, private router: Router) {}
 
   ngOnInit(): void {
+    this.score = parseInt(localStorage.getItem('currentScore') || '0');
+    this.house = this.playerData.getHouse();
+    this.startCounting();
     if (
       !this.playerData.backgroundMusic.playing() &&
       this.playerData.allowSounds
     ) {
       this.playerData.backgroundMusic.play();
     }
-    this.score = parseInt(localStorage.getItem('currentScore') || '0');
-    this.house = this.playerData.getHouse();
   }
 
   isNameTaken(name: string): boolean {
     let players = JSON.parse(localStorage.getItem('leaderboard') || '[]');
     return players.some(
-      (player: any) => player.name.toLowerCase() == name.toLowerCase()
+      (player: any) => player.name.toLowerCase() === name.toLowerCase()
     );
   }
 
@@ -55,6 +57,19 @@ export class GameOverComponent implements OnInit {
     }
   }
 
+  startCounting() {
+    if (this.score === this.displayedScore) {
+      return;
+    }
+    const stepValue = this.score > this.displayedScore ? 1 : -1;
+    const interval = setInterval(() => {
+      this.displayedScore += stepValue;
+      if (this.displayedScore === this.score) {
+        clearInterval(interval);
+      }
+    }, 50);
+  }
+
   navToLeaderboard(event: Event) {
     event.preventDefault();
     this.savePlayer();
@@ -69,7 +84,7 @@ export class GameOverComponent implements OnInit {
     event.preventDefault();
     this.savePlayer();
     if (!this.error) {
-      this.playerData.switchTheme('#1c004b');
+      this.playerData.switchTheme('#00000000');
       this.playerData.setScore(0);
       this.playerData.setRound(1);
       this.clearConfig();
