@@ -24,7 +24,7 @@
         </tbody>
     </table>
 
-    <table *ngIf="leaderboard.length; else noPlayersMessage">
+    <table class="rankings" *ngIf="leaderboard.length; else noPlayersMessage">
         <caption>Player Rankings:</caption>
         <thead>
             <tr>
@@ -47,5 +47,6 @@
     <ng-template #noPlayersMessage>
         <h3>No players yet!</h3>
     </ng-template>
-    <a class="attribution" href='https://www.vecteezy.com/free-photos/architecture'>Architecture Stock photos by Vecteezy</a>
+    <a class="attribution" href='https://www.vecteezy.com/free-photos/architecture'>Architecture Stock photos by
+        Vecteezy</a>
 </div>
