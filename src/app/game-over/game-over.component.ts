@@ -63,6 +63,7 @@ export class GameOverComponent implements OnInit {
     event.preventDefault();
     this.savePlayer();
     if (!this.error) {
+      this.playerData.switchTheme('#1c004b');
       this.playerData.setScore(0);
       this.playerData.setRound(1);
       this.clearConfig();

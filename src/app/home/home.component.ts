@@ -24,7 +24,6 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.playerService.switchTheme('#1c004b');
     this.form.patchValue({
       allowSounds: this.playerService.getAllowSounds(),
       // house: this.playerService.getHouse() || '',
