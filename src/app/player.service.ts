@@ -23,12 +23,12 @@ export class PlayerService {
         const settings: PlayerSettings = JSON.parse(json);
         this.house = settings.house ?? this.house;
         this.allowSounds = settings.allowSounds ?? this.allowSounds;
-      } catch { }
+      } catch {}
     }
     this.backgroundMusic = new Howl({
       src: ['../assets/background-music.mp3'],
       loop: true,
-      volume: 0.3,
+      volume: 0.1,
     });
   }
 
@@ -36,10 +36,7 @@ export class PlayerService {
     localStorage.setItem('theme', JSON.stringify(color));
     const root = this.document.documentElement;
     root.style.setProperty('--background', color);
-
   }
-
-
 
   setScore(newScore: number) {
     this.score = newScore;

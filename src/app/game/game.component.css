@@ -23,6 +23,7 @@
   justify-content: center;
   align-items: center;
   width: 13rem;
+  min-height: 19rem;
   box-shadow: 0px 6px 9px -5px rgb(0, 0, 0);
   border-radius: .3rem;
   margin-bottom: 1rem;
@@ -43,7 +44,7 @@
   width: 100%;
   height: 100%;
   border-radius: .3rem;
-  background: linear-gradient(to bottom, rgb(0, 0, 0) 0%, rgb(5, 178, 208) 100%);
+  background: linear-gradient(to bottom, rgb(0, 0, 0) 0%, var(--background) 100%);
   filter: blur(.75rem);
   z-index: 0;
 }
@@ -53,7 +54,7 @@
 }
 
 .profile img {
-  margin-top: .5rem;
+  margin-top: 1.5rem;
   max-height: 15rem;
   box-shadow: 0px 6px 9px -3px rgb(0, 0, 0);
   filter: brightness(.95) contrast(105%)
@@ -88,9 +89,11 @@
 
 
 .cardName {
-  width: 100%;
+  position: absolute;
+  top: 0;
+  width: 90%;
   border-bottom: 1px solid rgb(255, 255, 255);
-  padding-bottom: .25rem;
+  padding: .25rem;
   font-weight: bold;
   z-index: 2;
 }
