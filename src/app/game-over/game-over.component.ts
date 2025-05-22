@@ -16,6 +16,12 @@ export class GameOverComponent implements OnInit {
   constructor(private playerData: PlayerService, private router: Router) {}
 
   ngOnInit(): void {
+    if (
+      !this.playerData.backgroundMusic.playing() &&
+      this.playerData.allowSounds
+    ) {
+      this.playerData.backgroundMusic.play();
+    }
     this.score = parseInt(localStorage.getItem('currentScore') || '0');
     this.house = this.playerData.getHouse();
   }
