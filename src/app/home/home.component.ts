@@ -24,6 +24,10 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (!this.playerService.getHouse()) {
+      this.playerService.setRound(1);
+    }
+
     this.form.patchValue({
       allowSounds: this.playerService.getAllowSounds(),
       // house: this.playerService.getHouse() || '',

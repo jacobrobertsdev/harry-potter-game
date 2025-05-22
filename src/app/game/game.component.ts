@@ -12,7 +12,7 @@ import { Howl } from 'howler';
 export class GameComponent implements OnInit {
   characters: Character[] = [];
   currentCharacter!: Character;
-  round: number = 0;
+  round: number = 1;
   maxRounds: number = 6;
   userHouse: string = '';
   houses: string[] = ['Gryffindor', 'Hufflepuff', 'Ravenclaw', 'Slytherin'];
@@ -56,7 +56,7 @@ export class GameComponent implements OnInit {
     this.soundOn = this.playerConfig['allowSounds'];
 
     this.score = parseInt(localStorage.getItem('currentScore') || '0');
-    this.round = parseInt(localStorage.getItem('currentRound') || '0');
+    this.round = parseInt(localStorage.getItem('currentRound') || '1');
     this.userHouse = this.playerService.getHouse() || '';
   }
 
@@ -68,7 +68,6 @@ export class GameComponent implements OnInit {
 
     const randomIndex = Math.floor(Math.random() * this.characters.length);
     this.currentCharacter = this.characters[randomIndex];
-    this.round++;
     this.feedback = '';
   }
 
@@ -99,6 +98,8 @@ export class GameComponent implements OnInit {
     await new Promise<void>((resolve) => {
       setTimeout(() => {
         this.loadNextCharacter();
+        this.round++;
+        this.playerService.setRound(this.round);
         this.playerService.setScore(newScore);
         this.score = newScore;
         resolve();
