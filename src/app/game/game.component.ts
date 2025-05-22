@@ -40,6 +40,12 @@ export class GameComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (
+      !this.playerService.backgroundMusic.playing() &&
+      this.playerService.allowSounds
+    ) {
+      this.playerService.backgroundMusic.play();
+    }
     this.characterService.getCharacters().subscribe((data) => {
       this.characters = data;
       this.loadNextCharacter();
@@ -92,9 +98,9 @@ export class GameComponent implements OnInit {
 
     await new Promise<void>((resolve) => {
       setTimeout(() => {
+        this.loadNextCharacter();
         this.playerService.setScore(newScore);
         this.score = newScore;
-        this.loadNextCharacter();
         resolve();
       }, 1200);
     });

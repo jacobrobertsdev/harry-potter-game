@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Player } from '../player.model';
+import { PlayerService } from '../player.service';
 
 @Component({
   selector: 'app-leaderboard',
@@ -10,9 +11,15 @@ export class LeaderboardComponent implements OnInit {
   houseTotals: any = {};
   leaderboard: Player[] = [];
 
-  constructor() {}
+  constructor(private playerService: PlayerService) {}
 
   ngOnInit(): void {
+    if (
+      !this.playerService.backgroundMusic.playing() &&
+      this.playerService.allowSounds
+    ) {
+      this.playerService.backgroundMusic.play();
+    }
     this.leaderboard = JSON.parse(localStorage.getItem('leaderboard') || '[]');
     this.houseTotals = {
       gryffindor: this.calculateHouseTotals('gryffindor'),
