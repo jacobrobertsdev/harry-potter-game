@@ -1,11 +1,19 @@
 .game-container {
   width: 100vw;
+  height: 100vh;
   text-align: center;
   padding: 3rem 1rem 0rem 1rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-image:
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.8) 100%),
+        url('../../assets/hallway.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: white;
 }
 
 .profile {
@@ -106,4 +114,12 @@
 
 .name {
   font-weight: bold;
+}
+
+.attribution {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  color: white;
+  font-size: .5rem;
 }

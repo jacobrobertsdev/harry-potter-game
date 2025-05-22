@@ -25,9 +25,17 @@ img {
 }
 
 .container {
-    width: 70vw;
+    width: 100vw;
+    height: 100vh;
     padding-top: 6rem;
     text-align: center;
+    background-image:
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.8) 100%),
+        url('../../assets/hallway.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: white;
 }
 
 .house-totals {
@@ -44,6 +52,8 @@ td {
     border: 1px solid black;
     padding: .3rem;
     text-align: center;
+    background-color: #f2f2f2;
+    color: black;
 }
 
 th {
@@ -73,3 +83,11 @@ th {
 .ra {
     color: white;
 }
+
+.attribution {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    color: white;
+    font-size: .5rem;
+  }
