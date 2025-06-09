@@ -24,8 +24,6 @@ Note: The game is currently built for desktop, mobile styles are being worked on
 
 ## Screenshots
 
-Below are placeholders for the screenshots of the game. Replace these with your actual images.
-
 1. **Home Page**: Welcome screen with house selection and sound toggle.  
    ![Home Page](./src/assets/welcome.png)
 
